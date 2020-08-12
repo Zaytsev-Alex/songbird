@@ -1,0 +1,15 @@
+@import '../../abstracts/variables';
+
+.logo {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin: 0;
+
+    &__left {
+        color: $primary-color;
+    }
+
+    &__right {
+        color: $dark-primary-color;
+    }
+}

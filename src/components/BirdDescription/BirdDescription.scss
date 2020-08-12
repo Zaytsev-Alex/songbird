@@ -1,0 +1,65 @@
+@import '../../abstracts/variables';
+@import '../../abstracts/mixins';
+
+.bird-description {
+    max-width: 45%;
+    width: 100%;
+    background-color: darken($light-color, $amount: 8);
+    border: 1px solid $dark-primary-color;
+    border-radius: 8px;
+    padding: 20px;
+    color: $dark-primary-color;
+    min-height: 361px;
+
+    &__top {
+        @include flex($direction: row, $justify: left, $align: center);
+
+        @media screen and (max-width: $small-size){
+            flex-direction: column;
+        }
+    }
+
+    &__short {
+        width: 100%;
+    }
+
+    &__image {
+        max-width: 200px;
+        max-height: 200px;
+        width: 100%;
+        margin-right: 25px;
+    }
+
+    &__title {
+        margin: 0;
+        color: $dark-primary-color;
+        font-weight: 700;
+        font-size: 2.8rem;
+        padding-bottom: 18px;
+        border-bottom: 2px solid $sub-primary-color;
+
+        @media screen and (max-width: $small-size){
+            text-align: center;
+        }
+    }
+
+    &__species {
+        font-size: 2rem;
+        margin: 0;
+        border-bottom: 2px solid $sub-primary-color;
+        padding: 18px 0;
+        margin-bottom: 18px;
+
+        @media screen and (max-width: $small-size){
+            text-align: center;
+        }
+    }
+
+    &__full {
+        font-size: 1.65rem;
+    }
+
+    @media screen and (max-width: 800px){
+        max-width: 100%;
+    }
+}

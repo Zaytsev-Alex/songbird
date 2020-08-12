@@ -1,0 +1,47 @@
+@import '../../abstracts/variables';
+@import '../../abstracts/mixins';
+
+.nav {
+    @include flex($direction: row, $justify: left, $align: center, $wrap: wrap);
+    background-color: $primary-color;
+    min-height: 45px;
+    color: $light-color;
+    font-size: 1.8rem;
+    border-radius: 8px;
+
+    @media screen and (max-width: $extra-small-size){
+        flex-direction: column;
+    }
+
+    &__item {
+        list-style: none;
+        width: 16.5%;
+        min-width: 80px;
+        height: 45px;
+        @include center;
+        padding: 5px 10px;
+
+        &:first-child,
+        &:last-child {
+            border-radius: 7px;
+        }
+
+        &-active {
+            background-color: $sub-primary-color;
+            color: $dark-color;
+        }
+
+        @media screen and (max-width: $medium-size){
+            width: 25%;
+            margin-bottom: 11px;
+        }
+
+        @media screen and (max-width: $small-size){
+            width: 33%;
+        }
+
+        @media screen and (max-width: $extra-small-size){
+            width: 100%;
+        }
+    }
+}

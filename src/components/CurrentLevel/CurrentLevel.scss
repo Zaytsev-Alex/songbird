@@ -1,0 +1,52 @@
+@import '../../abstracts/variables';
+@import '../../abstracts/mixins';
+
+.current-level {
+    margin-top: 30px;
+    width: 100%;
+    background-color: darken($light-color, $amount: 8);
+    border-radius: 8px;
+
+    @include flex($direction: row, $justify: left, $align: center);
+
+    &__image-container {
+        width: 200px;
+        height: 200px;
+
+        @include center;
+    }
+
+    &__image {
+        max-width: 200px;
+        max-height: 200px;
+        width: 100%;
+    }
+
+    &__container {
+        padding: 20px 30px;
+        width: 100%;
+
+        @media screen and (max-width: $small-size){
+            padding: 10px 15px;
+        }
+    }
+
+    &__title {
+        text-transform: capitalize;
+        margin: 0 0 25px 10px;
+        font-size: 2.85rem;
+        color: $dark-primary-color;
+        width: 100%;
+        border-bottom: 2px solid $sub-primary-color;
+        padding-bottom: 10px;
+
+        @media screen and (max-width: $small-size){
+            text-align: center;
+            margin-left: 0;
+        }
+    }
+
+    @media screen and (max-width: $small-size){
+        flex-direction: column;
+    }
+}
