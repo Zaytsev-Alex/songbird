@@ -18,7 +18,7 @@ const BirdDescription = ({ data }) => {
                     <h4 className="bird-description__species">
                         {data.species}
                     </h4>
-                    <Player />
+                    <Player src={data.audio}/>
                 </div>
             </div>
             <div className="bird-description__bottom">

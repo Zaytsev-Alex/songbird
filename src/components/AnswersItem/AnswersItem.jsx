@@ -5,7 +5,7 @@ import './AnswersItem.scss';
 
 const AnswersItem = ({ data }) => {
     return (
-        <li key="data.id" className="answers__item">
+        <li className="answers__item">
             <span className="answers__item_circle" />
             <span className="answers__item_title">{data.name}</span>
         </li>
@@ -20,7 +20,7 @@ AnswersItem.propTypes = {
         description: PropTypes.string,
         image: PropTypes.string,
         audio: PropTypes.string
-    }).isRequired
+    }).isRequired,
 }
 
 export default AnswersItem;

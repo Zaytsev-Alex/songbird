@@ -5,14 +5,13 @@ import PropTypes from 'prop-types';
 import './Player.scss';
 
 const Player = ({ src }) => {
-    console.log(src)
     
     // const player = new Plyr('.audio');
     // console.log(player)
     return (
         <div className="audio-container">
             { /* eslint-disable-next-line */ }
-            <audio className="audio" controls src="" />
+            <audio className="audio" controls src={src} />
         </div>
     );
 }

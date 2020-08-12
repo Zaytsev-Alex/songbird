@@ -24,9 +24,12 @@
     }
 
     &__image {
-        max-width: 200px;
-        max-height: 200px;
-        width: 100%;
+        img {
+            max-width: 200px;
+            max-height: 200px;
+            width: 100%;   
+        }
+
         margin-right: 25px;
     }
 

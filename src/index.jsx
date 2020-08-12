@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import 'normalize.css';
@@ -10,15 +10,26 @@ import Score from './components/Score/Score';
 import CurrentLevel from './components/CurrentLevel/CurrentLevel';
 import Answers from './components/Answers/Answers';
 import BirdDescription from './components/BirdDescription/BirdDescription';
+import NextLevel from './components/NextLevel/NextLevel';
+
+import getRandomNumber from './getRandomNumber';
+import shuffleArray from './shuffleArray';
 
 import './index.scss';
-import NextLevel from './components/NextLevel/NextLevel';
 
 // import 'core-js/stable';
 // import 'regenerator-runtime/runtime';
 
 function App() {
   const placeholderImageSrc = './assets/images/image1.jpg';
+
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const birdsArray = shuffleArray(birdsData[currentPage]);
+  const [usedIndexes, min, max] = [[], 0, 5];
+
+  const birdIndex = getRandomNumber(min, max, usedIndexes);
+  usedIndexes.push(birdIndex);
 
   return (
     <div className="container">
@@ -33,10 +44,10 @@ function App() {
         <Navigation />
       </header>
       <main>
-        <CurrentLevel imageSrc={placeholderImageSrc} title="temporary" audioSrc="" />
+        <CurrentLevel imageSrc={placeholderImageSrc} title="*******" audioSrc={birdsArray[birdIndex].audio} />
         <div className="main-horizontal-container">
-          <Answers data={birdsData[0]}/>
-          <BirdDescription data={birdsData[0][1]}/>
+          <Answers data={birdsArray}/>
+          <BirdDescription data={birdsArray[birdIndex]}/>
         </div>
         <NextLevel />
       </main>
