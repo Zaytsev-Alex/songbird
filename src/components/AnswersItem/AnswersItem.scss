@@ -5,20 +5,37 @@
     background-color: darken($light-color, $amount: 8);
     list-style: none;
     width: 100%;
-    border: 1px solid $dark-primary-color;
-    border-bottom: 0;
-    padding: 19px 10px;
-    @include flex($direction: row, $align: center, $justify: left);
-    cursor: pointer;
-    transition: background-color 0.2s ease-out;
+
+    &-button {
+        width: 100%;
+        background-color: darken($light-color, $amount: 8);
+        border: 1px solid $dark-primary-color;
+        border-bottom: 0;
+        padding: 19px 10px;
+        @include flex($direction: row, $align: center, $justify: left);
+        cursor: pointer;
+        transition: background-color 0.2s ease-out;
+        
+        &:hover {
+            background-color: lighten($sub-primary-color, $amount: 5);
+        }   
+    }
 
     &:first-child {
         border-radius: 8px 8px 0 0;
+
+        button {
+            border-radius: 8px 8px 0 0;
+        }
     }
 
     &:last-child {
-        border-bottom: 1px solid $dark-primary-color;
         border-radius: 0 0 8px 8px;
+
+        button {
+            border-bottom: 1px solid $dark-primary-color;
+            border-radius: 0 0 8px 8px;
+        }
     }
 
     &_circle {
@@ -30,12 +47,17 @@
         background-color: $primary-color;
     }
 
+    &_correct {
+        background-color: green;
+    }
+
+    &_wrong {
+        background-color: red;
+    }
+
     &_title {
         font-size: 1.9rem;
         color: $dark-primary-color;
     }
 
-    &:hover {
-        background-color: lighten($sub-primary-color, $amount: 5);
-    }
 }

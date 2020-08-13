@@ -12,14 +12,16 @@
     &__image-container {
         width: 200px;
         height: 200px;
+        margin-left: 10px;
 
         @include center;
     }
 
     &__image {
-        max-width: 200px;
-        max-height: 200px;
+        max-width: 180px;
+        max-height: 180px;
         width: 100%;
+        background-color: transparent;
     }
 
     &__container {
