@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 
 import './Score.scss';
 
-const Score = ({ score }) => {
+const Score = ({ total }) => {
     return (
         <div className="score">
             <span className="score__title">Score: </span>
-            <span className="score__current">{score}</span>
+            <span className="score__current">{total}</span>
         </div>
     );
 }
 
 Score.propTypes = {
-    score: PropTypes.number
+    total: PropTypes.number
 }
 
 Score.defaultProps = {
-    score: 0
+    total: 0
 }
 
 export default Score;

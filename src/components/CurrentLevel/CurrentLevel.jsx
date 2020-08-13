@@ -5,14 +5,14 @@ import placeholderImage from '../../assets/images/placeholder.svg';
 
 import './CurrentLevel.scss';
 
-const CurrentLevel = ({imageSrc, title, audioSrc}) => {
+const CurrentLevel = ({imageSrc, title, audioSrc, guess}) => {
     return (
         <div className="current-level">
             <div className="current-level__image-container">
-                <img className="current-level__image" src={placeholderImage} alt="" />
+                <img className="current-level__image" src={guess ? imageSrc : placeholderImage} alt="" />
             </div>
             <div className="current-level__container">
-                <h2 className="current-level__title">{title}</h2>
+                <h2 className="current-level__title">{guess ? title : "*******"}</h2>
                 <Player src={audioSrc} />
             </div>
         </div>
@@ -22,7 +22,12 @@ const CurrentLevel = ({imageSrc, title, audioSrc}) => {
 CurrentLevel.propTypes = {
     imageSrc: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    audioSrc: PropTypes.string.isRequired
+    audioSrc: PropTypes.string.isRequired,
+    guess: PropTypes.bool
+}
+
+CurrentLevel.defaultProps = {
+    guess: false
 }
 
 export default CurrentLevel;

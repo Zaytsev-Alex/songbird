@@ -22,18 +22,19 @@ import answerItemStatus from './components/componentsStatus';
 import './index.scss';
 
 function App() {
-  const placeholderImageSrc = './assets/images/image1.jpg';
-
   const [currentPage, setCurrentPage] = useState(0);
 
   const [birdsArray, setBirdsArray] = useState(shuffleArray(birdsData[currentPage]));
-  const [usedIndexes, min, max] = [[], 0, 5];
+  const [min, max] = [0, 5];
 
-  const [birdIndex, setBirdIndex] = useState(getRandomNumber(min, max, usedIndexes));
+  const [birdIndex, setBirdIndex] = useState(getRandomNumber(min, max));
 
   const [guess, setGuess] = useState(false);
 
-  usedIndexes.push(birdIndex);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
+  const [score, setScore] = useState(0);
+  const [currentStrickScore, setCurrentStrickScore] = useState(5);
 
   const checkAnswer = (event) => {
     let currentAnswer;
@@ -51,15 +52,19 @@ function App() {
     const currentAnswerTitle = currentAnswer.querySelector('.answers__item_title').textContent;
     const index = birdsArray.map(e => e.name).indexOf(currentAnswerTitle);
 
+    setSelectedIndex(index);
+
     if (birdsArray.map(e => e.status).indexOf(answerItemStatus.correct) === -1 && birdsArray[index].status === undefined) {
       if (currentAnswerTitle === birdsArray[birdIndex].name) {
         // new Audio(correctSound).play();
         birdsArray[index].status = answerItemStatus.correct;
+        setScore(score + currentStrickScore);
         setGuess(true);
   
       } else {
         // new Audio(wrongSound).play();
         birdsArray[index].status = answerItemStatus.wrong;
+        setCurrentStrickScore(currentStrickScore - 1);
       }
 
       setBirdsArray([...birdsArray]);
@@ -68,30 +73,47 @@ function App() {
     return currentAnswerTitle === birdsArray[birdIndex].name;
   }
 
-  console.log(birdIndex)
+  const showNextLevel = () => {
+    setCurrentPage(currentPage + 1);
+    if (currentPage !== 6) {
+      setBirdsArray(shuffleArray(birdsData[currentPage]));
+      setBirdIndex(getRandomNumber(min, max));
+      setGuess(false);
+      setSelectedIndex(-1);
+      setCurrentStrickScore(5);
+    }
+  }
 
+  console.log(birdsArray, currentPage)
+
+
+  if (currentPage !== 6) {
+    return (
+      <div className="container">
+        <header>
+          <div className="header__upper">
+            <h1 className="logo">
+              <span className="logo__left">Song</span>
+              <span className="logo__right">Bird</span>
+            </h1>
+            <Score total={score}/>
+          </div>
+          <Navigation />
+        </header>
+        <main>
+          <CurrentLevel imageSrc={birdsArray[birdIndex].image} title={birdsArray[birdIndex].name} audioSrc={birdsArray[birdIndex].audio} guess={guess} />
+          <div className="main-horizontal-container">
+            <Answers data={birdsArray} checkAnswer={checkAnswer} />
+            <BirdDescription data={selectedIndex >= 0 ? birdsArray[selectedIndex] : undefined} index={selectedIndex} />
+          </div>
+          <NextLevel guess={guess} showNextLevel={showNextLevel}/>
+        </main>
+      </div>
+    );
+  }
   return (
-    <div className="container">
-      <header>
-        <div className="header__upper">
-          <h1 className="logo">
-            <span className="logo__left">Song</span>
-            <span className="logo__right">Bird</span>
-          </h1>
-          <Score />
-        </div>
-        <Navigation />
-      </header>
-      <main>
-        <CurrentLevel imageSrc={placeholderImageSrc} title="*******" audioSrc={birdsArray[birdIndex].audio} guess={guess} />
-        <div className="main-horizontal-container">
-          <Answers data={birdsArray} checkAnswer={checkAnswer} />
-          <BirdDescription data={birdsArray[birdIndex]} />
-        </div>
-        <NextLevel guess={guess} />
-      </main>
-    </div>
-  )
+    <h1>sorry</h1>
+  );
 }
 
 const root = document.getElementById('root');

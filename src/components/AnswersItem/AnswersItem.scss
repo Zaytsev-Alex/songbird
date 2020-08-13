@@ -15,7 +15,7 @@
         @include flex($direction: row, $align: center, $justify: left);
         cursor: pointer;
         transition: background-color 0.2s ease-out;
-        
+
         &:hover {
             background-color: lighten($sub-primary-color, $amount: 5);
         }   
@@ -44,15 +44,15 @@
         height: 10px;
         margin-right: 10px;
         border-radius: 50%;
-        background-color: $primary-color;
+        background-color: $sub-primary-color;
     }
 
     &_correct {
-        background-color: green;
+        background-color: $correct-color;
     }
 
     &_wrong {
-        background-color: red;
+        background-color: $error-color;
     }
 
     &_title {

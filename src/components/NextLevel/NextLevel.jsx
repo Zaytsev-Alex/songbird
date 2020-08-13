@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 
 import './NextLevel.scss';
 
-const NextLevel = ({ status }) => {
+const NextLevel = ({ guess, showNextLevel }) => {
     return (
-        <input className="next-level" type="button" disabled={!status} value='Next Level'/>
+        <input className="next-level" type="button" disabled={!guess} value='Next Level' onClick={showNextLevel} />
     );
 }
 
 NextLevel.propTypes = {
-    status: PropTypes.bool
+    guess: PropTypes.bool,
+    showNextLevel: PropTypes.func.isRequired
 }
 
 NextLevel.defaultProps = {
-    status: false
+    guess: false
 }
 
 export default NextLevel;
