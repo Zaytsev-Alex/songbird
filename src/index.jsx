@@ -17,9 +17,6 @@ import getRandomNumber from './getRandomNumber';
 import shuffleArray from './shuffleArray';
 import answerItemStatus from './components/componentsStatus';
 
-// import correctSound from './assets/audio/correct.mp3';
-// import wrongSound from './assets/audio/error.mp3';
-
 import './index.scss';
 
 function App() {
@@ -36,6 +33,8 @@ function App() {
 
   const [score, setScore] = useState(0);
   const [currentStrickScore, setCurrentStrickScore] = useState(5);
+
+  console.log(`Раунд ${currentPage}: правильный ответ - ${birdsArray[birdIndex].name}`)
 
   const checkAnswer = (event) => {
     let currentAnswer;
@@ -57,13 +56,16 @@ function App() {
 
     if (birdsArray.map(e => e.status).indexOf(answerItemStatus.correct) === -1 && birdsArray[index].status === undefined) {
       if (currentAnswerTitle === birdsArray[birdIndex].name) {
-        // new Audio(correctSound).play();
+        document.querySelectorAll('audio').forEach(e => e.pause());
+        const correctSound = 'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3';
+        new Audio(correctSound).play();
         birdsArray[index].status = answerItemStatus.correct;
         setScore(score + currentStrickScore);
         setGuess(true);
   
       } else {
-        // new Audio(wrongSound).play();
+        const wrongSound = 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3';
+        new Audio(wrongSound).play();
         birdsArray[index].status = answerItemStatus.wrong;
         setCurrentStrickScore(currentStrickScore - 1);
       }

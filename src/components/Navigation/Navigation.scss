@@ -15,8 +15,7 @@
 
     &__item {
         list-style: none;
-        width: 16.5%;
-        min-width: 80px;
+        flex: auto;
         height: 45px;
         @include center;
         padding: 5px 10px;

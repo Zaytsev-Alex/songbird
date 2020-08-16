@@ -8,8 +8,9 @@ import './Player.scss';
 
 const Player = ({ src }) => {
     return (
-        <div className="audio">
+        <div className="audio-container">
             <AudioPlayer
+                className="audio"
                 src={src}
                 showJumpControls={false}
                 autoPlayAfterSrcChange={false}
