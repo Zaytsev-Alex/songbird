@@ -1,0 +1,19 @@
+@import '../../abstracts/variables';
+@import '../../abstracts/mixins';
+
+.result {
+    background-color: darken($light-color, $amount: 8);
+    border: 1px solid $dark-primary-color;
+    border-radius: 8px;
+    color: $dark-primary-color;
+
+    @include flex($direction: column, $align: center, $justify: center);
+
+    &__header {
+        font-size: 2.6rem;
+    }
+
+    &__description {
+        font-size: 1.9rem;
+    }
+}

@@ -7,6 +7,8 @@ const NextLevel = ({ guess, showNextLevel, current }) => {
     let value = 'Next Level';
     if (current === 5) {
         value = 'Result';
+    } else if (current === -1) {
+        value = 'Repeat';
     }
     return (
         <input className="next-level" type="button" disabled={!guess} value={value} onClick={showNextLevel} />
@@ -20,7 +22,7 @@ NextLevel.propTypes = {
 }
 
 NextLevel.defaultProps = {
-    guess: false
+    guess: false,
 }
 
 export default NextLevel;

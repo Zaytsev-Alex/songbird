@@ -11,6 +11,7 @@ import CurrentLevel from './components/CurrentLevel/CurrentLevel';
 import Answers from './components/Answers/Answers';
 import BirdDescription from './components/BirdDescription/BirdDescription';
 import NextLevel from './components/NextLevel/NextLevel';
+import Result from './components/Result/Result';
 
 import getRandomNumber from './getRandomNumber';
 import shuffleArray from './shuffleArray';
@@ -75,13 +76,27 @@ function App() {
 
   const showNextLevel = () => {
     setCurrentPage(currentPage + 1);
-    if (currentPage !== 6) {
+    if (currentPage + 1 !== 6) {
       setBirdsArray(shuffleArray(birdsData[currentPage + 1]));
       setBirdIndex(getRandomNumber(min, max));
       setGuess(false);
       setSelectedIndex(-1);
       setCurrentStrickScore(5);
     }
+  }
+
+  const repeatGame = () => {
+    setCurrentPage(0);
+    setBirdsArray(shuffleArray(birdsData[0]));
+    setBirdIndex(getRandomNumber(min, max));
+    setGuess(false);
+    setSelectedIndex(-1);
+    setCurrentStrickScore(5);
+
+    birdsData.forEach(element => element.forEach((e) => {
+        delete e.status;
+      })
+    )
   }
 
   if (currentPage !== 6) {
@@ -109,7 +124,9 @@ function App() {
     );
   }
   return (
-    <h1>Total Score</h1>
+    <div className="container">
+      <Result score={score} showNextLevel={repeatGame}/>
+    </div>
   );
 }
 
