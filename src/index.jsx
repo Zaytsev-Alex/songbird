@@ -19,7 +19,7 @@ import answerItemStatus from './components/componentsStatus';
 
 import './index.scss';
 
-function App() {
+function SongBird() {
   const [currentPage, setCurrentPage] = useState(0);
 
   const [birdsArray, setBirdsArray] = useState(shuffleArray(birdsData[currentPage]));
@@ -94,6 +94,7 @@ function App() {
     setGuess(false);
     setSelectedIndex(-1);
     setCurrentStrickScore(5);
+    setScore(0);
 
     birdsData.forEach(element => element.forEach((e) => {
         delete e.status;
@@ -133,4 +134,4 @@ function App() {
 }
 
 const root = document.getElementById('root');
-ReactDOM.render(<App />, root);
+ReactDOM.render(<SongBird />, root);
