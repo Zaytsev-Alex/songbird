@@ -1,0 +1,15 @@
+@import '../../abstracts/variables';
+
+.score {
+    font-size: 2rem;
+
+    &__title {
+        color: $dark-color;
+    }
+
+    &__current {
+        font-weight: 700;
+        color: $primary-color;
+        font-size: 2.2rem;
+    }
+}

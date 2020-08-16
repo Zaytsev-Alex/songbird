@@ -1,0 +1,52 @@
+@import './abstracts/_variables';
+@import './abstracts/mixins'; 
+
+@import './components/Logo/Logo';
+
+* {
+  box-sizing: border-box;
+}
+
+html { 
+  font-size: 10px;
+  background-color: $light-color;
+  @include font;
+}
+
+.container {
+  max-width: $big-size;
+  width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+
+  @media screen and (max-width: $big-size){
+    max-width: calc($big-size - 40px);
+  }
+}
+
+.header {
+  width: 100%;
+
+  &__upper {
+    padding: 0 30px;
+    @include flex($direction: row, $justify: space-between, $align: center);
+    margin-bottom: 15px;
+
+    @media screen and (max-width: $extra-small-size){
+      padding: 0;
+      @include flex($direction: column, $justify: center, $align: center);
+    }
+  }
+}
+.main-horizontal-container {
+  padding-top: 30px;
+  @include flex($direction: row, $justify: space-between, $align: center);
+
+  @media screen and (max-width: 800px){
+    flex-direction: column;
+  }
+}
+
+.audio {
+  width: 100%;
+}

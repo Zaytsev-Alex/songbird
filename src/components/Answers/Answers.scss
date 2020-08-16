@@ -1,0 +1,21 @@
+@import '../../abstracts/mixins';
+@import '../../abstracts/variables';
+
+.answers {
+    padding: 0;
+    margin: 0;
+    border-radius: 8px;
+
+    &-container {
+        max-width: 45%;
+        width: 100%;
+        border-radius: 8px;
+        min-height: 350px;
+
+        @media screen and (max-width: 800px){
+            max-width: 100%;
+            margin-bottom: 30px;
+        }
+    }
+
+}
