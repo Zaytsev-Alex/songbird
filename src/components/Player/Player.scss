@@ -1,11 +1,18 @@
+@import '../../abstracts/variables';
 
+.audio {
+    .rhap_container {
+        background-color: $sub-primary-color;
+        border-radius: 8px;
+    }
 
-// .audio-container {
-// 	max-width: 325px;
-// 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-// 	--plyr-color-main: #20B2AA;
-// 	--plyr-control-icon-size: 20px;
-// 	--plyr-audio-controls-background: #eee;
-// 	--plyr-audio-control-color: #20B2AA;
-// 	--plyr-font-size-time: medium;
-// }
+    .rhap_button-clear,
+    .rhap_time {
+        color: $dark-primary-color;
+    }
+
+    .rhap_volume-indicator,
+    .rhap_progress-indicator {
+        background-color: $dark-primary-color;
+    }
+}

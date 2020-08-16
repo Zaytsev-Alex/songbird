@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Plyr from 'plyr';
+
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 
 import './Player.scss';
 
 const Player = ({ src }) => {
-    
-    // const player = new Plyr('.audio');
-    // console.log(player)
     return (
-        <div className="audio-container">
-            { /* eslint-disable-next-line */ }
-            <audio className="audio" controls src={src} />
+        <div className="audio">
+            <AudioPlayer
+                src={src}
+                showJumpControls={false}
+                autoPlayAfterSrcChange={false}
+                customAdditionalControls={[]}
+            />
         </div>
     );
 }

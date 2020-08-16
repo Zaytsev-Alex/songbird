@@ -6,11 +6,14 @@
     border: 1px solid $dark-primary-color;
     border-radius: 8px;
     color: $dark-primary-color;
+    padding: 20px;
 
     @include flex($direction: column, $align: center, $justify: center);
 
     &__header {
         font-size: 2.6rem;
+        margin: 0;
+        margin-bottom: 20px;
     }
 
     &__description {
