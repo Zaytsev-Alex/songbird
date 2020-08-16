@@ -76,16 +76,13 @@ function App() {
   const showNextLevel = () => {
     setCurrentPage(currentPage + 1);
     if (currentPage !== 6) {
-      setBirdsArray(shuffleArray(birdsData[currentPage]));
+      setBirdsArray(shuffleArray(birdsData[currentPage + 1]));
       setBirdIndex(getRandomNumber(min, max));
       setGuess(false);
       setSelectedIndex(-1);
       setCurrentStrickScore(5);
     }
   }
-
-  console.log(birdsArray, currentPage)
-
 
   if (currentPage !== 6) {
     return (
@@ -98,7 +95,7 @@ function App() {
             </h1>
             <Score total={score}/>
           </div>
-          <Navigation />
+          <Navigation current={currentPage} />
         </header>
         <main>
           <CurrentLevel imageSrc={birdsArray[birdIndex].image} title={birdsArray[birdIndex].name} audioSrc={birdsArray[birdIndex].audio} guess={guess} />
@@ -106,13 +103,13 @@ function App() {
             <Answers data={birdsArray} checkAnswer={checkAnswer} />
             <BirdDescription data={selectedIndex >= 0 ? birdsArray[selectedIndex] : undefined} index={selectedIndex} />
           </div>
-          <NextLevel guess={guess} showNextLevel={showNextLevel}/>
+          <NextLevel guess={guess} showNextLevel={showNextLevel} current={currentPage} />
         </main>
       </div>
     );
   }
   return (
-    <h1>sorry</h1>
+    <h1>Total Score</h1>
   );
 }
 
